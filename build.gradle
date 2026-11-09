@@ -11,7 +11,6 @@ dependencies {
     implementation group: 'com.github.mac-comp127', name: 'kilt-graphics', version: '1.+'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.+'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation group: 'com.github.mac-comp127', name: 'kilt-graphics', version: '1.10'
 }
 
 test {
@@ -23,6 +22,6 @@ java {
     targetCompatibility = 1.17
 }
 
-sourceSets.main.java.srcDirs = ['src', 'vendor']
+sourceSets.main.java.srcDirs = ['src']
 sourceSets.main.resources.srcDirs = ['res']
 sourceSets.test.java.srcDirs = ['test']
