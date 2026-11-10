@@ -9,22 +9,10 @@ public class Ignition {
 
     }
     public static void main(String[] args) {
-        Ignition main = new Ignition();
+        new Ignition();
         Window MainWindow = new Window();
         canvas.add(MainWindow.getBackground());
-        //Ball attack = new Ball();
-        //canvas.add(attack.getGraphics(),200,300);
         canvas.animate(dt -> {
-            /*if (MainWindow.IsBallOut()==1){
-                MainWindow.attack.ReverseY();
-                MainWindow.attack.MoveBall();
-            }
-            else if (MainWindow.IsBallOut()==2) 
-                {
-                    MainWindow.attack.ReverseX();
-                    MainWindow.attack.MoveBall();
-                }
-            else {MainWindow.attack.MoveBall();}*/
             MainWindow.attack.Collide();
         });
 

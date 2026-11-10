@@ -14,22 +14,7 @@ public class Window {
              start.onClick(() -> SendToGame());
         background.add(start,500*0.4,250);
         background.add(attack.getGraphics(),500*0.4,300);
-        //background.add(attack.getGraphics());
-
-        
-
-
     }
-    /*public int IsBallOut(){
-        int result=0;
-        if (attack.getGraphics().getCenter().getY()+attack.getRadius()>=500 || attack.getGraphics().getCenter().getX()+attack.getRadius()>=500) 
-            {
-                if (attack.getGraphics().getCenter().getY() >= attack.getGraphics().getCenter().getX()) result=1;
-                else result=2;
-            }
-        else result=0;
-        return result;
-    }*/
     public GraphicsGroup getBackground(){return background;}
     public void SendToGame()    {
 

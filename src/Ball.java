@@ -27,7 +27,7 @@ public class Ball extends Collision
     }
 
     @Override 
-    public void Collide(){
+    public void Collide(){ //based on how result is set (0-2) it knows which way it needs to reverse
                     if (IsBallOut(this)==1){
                 this.ReverseY();
                 this.MoveBall();
