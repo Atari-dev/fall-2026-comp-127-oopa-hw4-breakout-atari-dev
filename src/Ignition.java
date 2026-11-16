@@ -13,7 +13,7 @@ public class Ignition {
         Window MainWindow = new Window();
         canvas.add(MainWindow.getBackground());
         canvas.animate(dt -> {
-            MainWindow.attack.Collide();
+            MainWindow.attack.Collide(null);
         });
 
     }

@@ -1,5 +1,3 @@
-
-
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
 import java.awt.Color;
@@ -9,6 +7,7 @@ public class Ball extends Collision
 {
     private Ellipse Ball;
     private int diameter=15;
+    private int radius=diameter/2;
     private double SpeedX=5;
     private double SpeedY=5;
     private final double GravY = 1;
@@ -22,12 +21,30 @@ public class Ball extends Collision
 
     @Override
     public GraphicsObject getBoundedArea() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
+public int IsBallOut(Ball ball){
+        CurrentX = Ball.getCenter().getX();
+        CurrentY = Ball.getCenter().getY();
+        int result=0;
+        if ((CurrentY+radius>=500 || CurrentX+radius>=500)){
+                if (CurrentY >= CurrentX) result=1;
+                else result=2;
+            }
+        else result=0;
+
+        if (CurrentY-radius<=0 || CurrentX-radius<=0){
+            {
+                if (CurrentY <= CurrentX) result=1;
+                else result=2;
+            }
+        }
+        return result;}
+
 
     @Override 
-    public void Collide(){ //based on how result is set (0-2) it knows which way it needs to reverse
+    public void Collide(Ball ball){ //based on how result is set (0-2) it knows which way it needs to reverse
                     if (IsBallOut(this)==1){
                 this.ReverseY();
                 this.MoveBall();
@@ -42,7 +59,7 @@ public class Ball extends Collision
 
     public GraphicsObject getGraphics() {return Ball;}
 
-    public int getRadius() {return diameter/2;}
+    public int getradius() {return diameter/2;}
 
     public void ReverseY() {SpeedY *= -1;}
     public void ReverseX() {SpeedX *= -1;}
