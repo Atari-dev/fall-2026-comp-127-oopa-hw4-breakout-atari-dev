@@ -2,7 +2,7 @@ import edu.macalester.graphics.*;
 
 public class Brick extends Collision {
     private Rectangle rect;
-    private int size;
+    private int width,height;
     public Brick(){
         this.rect = new Rectangle(0,0, 75,25);
     }
@@ -22,6 +22,7 @@ public class Brick extends Collision {
             attacker.ReverseY();
             
         }
+
     }
 
 

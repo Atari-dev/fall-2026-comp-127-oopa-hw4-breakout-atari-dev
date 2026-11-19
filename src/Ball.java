@@ -59,16 +59,16 @@ public int IsBallOut(Ball ball){
 
     public GraphicsObject getGraphics() {return Ball;}
 
-    public int getradius() {return diameter/2;}
+    public int getRadius() {return diameter/2;}
+    public double getSpeedY() {return SpeedY;}
+    public double getSpeedX() {return SpeedX;}
 
     public void ReverseY() {SpeedY *= -1;}
     public void ReverseX() {SpeedX *= -1;}
 
     public void MoveBall()
     {
-        CurrentX = Ball.getCenter().getX();
-        CurrentY = Ball.getCenter().getY();
-        Ball.setCenter((CurrentX+SpeedX), (CurrentY+SpeedY));
+        Ball.moveBy(SpeedX,SpeedY);
 
     }
 }
