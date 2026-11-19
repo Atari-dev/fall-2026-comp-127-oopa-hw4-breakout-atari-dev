@@ -19,6 +19,8 @@ public class Brick extends Collision {
         if (getGraphics().testHit(attacker.getGraphics().getX(),attacker.getGraphics().getY()))
         {
             System.out.println("yay");
+            attacker.ReverseY();
+            
         }
     }
 

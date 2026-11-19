@@ -14,6 +14,7 @@ public class Ignition {
         canvas.add(MainWindow.getBackground());
         canvas.animate(dt -> {
             MainWindow.attack.Collide(null);
+            MainWindow.test.Collide(MainWindow.attack);
         });
 
     }
