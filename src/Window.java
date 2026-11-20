@@ -30,7 +30,7 @@ public class Window {
         for (i = 0; i != 50; i++) {
             if (i < 10 && i <20)
                 {
-                    System.out.println("step 1");
+                System.out.println("step 1");
                 Brick victim = new Brick(0,0,50,15);
                 victim.getGraphics().setFillColor(new Color(0, 145, 235));
                 background.add(victim.getGraphics(),i*50,0);
