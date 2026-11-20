@@ -20,7 +20,11 @@ public class Ignition {
         canvas.animate(dt -> {
             MainWindow.attack.Collide(MainWindow.attack);
             TileSet.forEach( brick -> {
-                MainWindow.attack.Collide(brick);
+                if (MainWindow.attack.Collide(brick))
+                {
+                    MainWindow.getBackground().remove(brick.getGraphics());
+                }
+
             });
             MainWindow.attack.Collide(MainWindow.test);
         });

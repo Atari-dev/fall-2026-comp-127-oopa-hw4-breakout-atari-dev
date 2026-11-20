@@ -58,8 +58,8 @@ public int IsBallOut(Ball ball){
                 }
             else this.MoveBall();}
 
-public void Collide(Brick Defender) {
-
+public boolean Collide(Brick Defender) {
+boolean delete=false;
 double cx = getGraphics().getCenter().getX();
 double cy = getGraphics().getCenter().getY();
 boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
@@ -67,13 +67,17 @@ boolean hitBottom = Defender.getGraphics().testHit(cx, cy + radius);
 boolean hitLeft = Defender.getGraphics().testHit(cx - radius, cy);
 boolean hitRight = Defender.getGraphics().testHit(cx + radius, cy);
 
+
+
 if (hitTop || hitBottom ) {
     ReverseY();
+   delete = true;
 }
 else if (hitLeft || hitRight) {
     ReverseX();
+    delete = true;
 }
-    
+    return delete;
     }
 
     public GraphicsObject getGraphics() {return Ball;}
