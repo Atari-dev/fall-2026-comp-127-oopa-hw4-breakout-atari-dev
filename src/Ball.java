@@ -59,7 +59,7 @@ public int IsBallOut(Ball ball){
             else this.MoveBall();}
 
 public void Collide(Brick Defender) {
-// AI Generated 
+
 double cx = getGraphics().getCenter().getX();
 double cy = getGraphics().getCenter().getY();
 boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
