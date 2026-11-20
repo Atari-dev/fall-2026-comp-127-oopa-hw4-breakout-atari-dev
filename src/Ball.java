@@ -1,6 +1,7 @@
+import java.awt.Color;
+
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
-import java.awt.Color;
 
 
 public class Ball extends Collision
@@ -59,7 +60,12 @@ public int IsBallOut(Ball ball){
             else this.MoveBall();}
 
 public boolean Collide(Brick Defender) {
-boolean delete=false;
+    boolean delete=false;
+    if (Defender.getGraphics().equals(null))
+    {
+        return delete;
+    }
+
 double cx = getGraphics().getCenter().getX();
 double cy = getGraphics().getCenter().getY();
 boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
@@ -78,6 +84,52 @@ else if (hitLeft || hitRight) {
     delete = true;
 }
     return delete;
+    }
+
+
+
+public boolean IsCollided(Brick Defender) {
+    boolean delete=false;
+    if (Defender.getGraphics().equals(null))
+    {
+        return delete;
+    }
+
+double cx = getGraphics().getCenter().getX();
+double cy = getGraphics().getCenter().getY();
+boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
+boolean hitBottom = Defender.getGraphics().testHit(cx, cy + radius);
+boolean hitLeft = Defender.getGraphics().testHit(cx - radius, cy);
+boolean hitRight = Defender.getGraphics().testHit(cx + radius, cy);
+
+
+
+if (hitTop || hitBottom ) {
+   delete = true;
+}
+else if (hitLeft || hitRight) {
+    delete = true;
+}
+    return delete;
+    }
+
+
+public void Collide(Paddle Bonker) {
+double cx = getGraphics().getCenter().getX();
+double cy = getGraphics().getCenter().getY();
+boolean hitTop = Bonker.getGraphics().testHit(cx, cy - radius);
+boolean hitBottom = Bonker.getGraphics().testHit(cx, cy + radius);
+boolean hitLeft = Bonker.getGraphics().testHit(cx - radius, cy);
+boolean hitRight = Bonker.getGraphics().testHit(cx + radius, cy);
+
+
+
+if (hitTop || hitBottom ) {
+    ReverseY();
+}
+else if (hitLeft || hitRight) {
+    ReverseX();
+}
     }
 
     public GraphicsObject getGraphics() {return Ball;}

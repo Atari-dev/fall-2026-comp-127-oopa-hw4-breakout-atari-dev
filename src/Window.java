@@ -10,15 +10,20 @@ import java.awt.Color;
 public class Window {
     private GraphicsGroup background;
     private Button start;
+    private int i;
     protected Ball attack;
     protected Ball attack2;
     protected Brick test;
-    private int i;
+    protected Paddle Pladdle;
+
     public Window()
     {
         //rn assumes size is 500
-        this.attack = new Ball(5,5);
-        this.attack2 = new Ball(5,0);
+
+        this.Pladdle = new Paddle(175, 400, 75, 30);
+        Pladdle.getGraphics().setFillColor(new Color(255,255,255));
+        this.attack = new Ball(5,-5);
+
         background = new GraphicsGroup();
           start = new Button("Start Game!");
              start.onClick(() -> SendToGame());
@@ -26,6 +31,7 @@ public class Window {
         background.add(start,500*0.4,250);
         background.add(attack.getGraphics(),150,300);
         background.add(test.getGraphics(),150,40);
+        background.add(Pladdle.getGraphics());
 
         for (i = 0; i != 50; i++) {
             if (i < 10 && i <20)
