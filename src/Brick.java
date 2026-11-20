@@ -3,11 +3,11 @@ import edu.macalester.graphics.*;
 public class Brick extends Collision {
     private Rectangle rect;
     private int width,height;
-    public Brick(){
-        this.rect = new Rectangle(0,0, 75,25);
+    public Brick(int x, int y,int width, int height){
+        this.rect = new Rectangle(x,y, width,height);
     }
 
-    public GraphicsObject getGraphics(){return rect;}
+    public Rectangle getGraphics(){return rect;}
     @Override
     public GraphicsObject getBoundedArea() {
         // TODO Auto-generated method stub
@@ -15,15 +15,9 @@ public class Brick extends Collision {
     }
 
     @Override
-    public void Collide(Ball attacker) {
-        if (getGraphics().testHit(attacker.getGraphics().getX(),attacker.getGraphics().getY()))
-        {
-            System.out.println("yay");
-            attacker.ReverseY();
-            
-        }
-
+    public void Collide(Ball ball) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Collide'");
     }
-
 
 }

@@ -6,17 +6,19 @@ import java.awt.Color;
 public class Ball extends Collision
 {
     private Ellipse Ball;
-    private int diameter=15;
+    private int diameter=16;
     private int radius=diameter/2;
-    private double SpeedX=5;
-    private double SpeedY=5;
+    private double SpeedX;
+    private double SpeedY;
     private final double GravY = 1;
     private double CurrentX;
     private double CurrentY;
 
-    public Ball()   {
+    public Ball(int SpeedX,int SpeedY)   {
         this.Ball = new Ellipse(0, 0, diameter, diameter);
         this.Ball.setFillColor(new Color(100,200,52));
+        this.SpeedX=SpeedX;
+        this.SpeedY=SpeedY;
     }
 
     @Override
@@ -56,6 +58,23 @@ public int IsBallOut(Ball ball){
                 }
             else this.MoveBall();}
 
+public void Collide(Brick Defender) {
+// AI Generated 
+double cx = getGraphics().getCenter().getX();
+double cy = getGraphics().getCenter().getY();
+boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
+boolean hitBottom = Defender.getGraphics().testHit(cx, cy + radius);
+boolean hitLeft = Defender.getGraphics().testHit(cx - radius, cy);
+boolean hitRight = Defender.getGraphics().testHit(cx + radius, cy);
+
+if (hitTop || hitBottom ) {
+    ReverseY();
+}
+else if (hitLeft || hitRight) {
+    ReverseX();
+}
+    
+    }
 
     public GraphicsObject getGraphics() {return Ball;}
 
@@ -68,6 +87,8 @@ public int IsBallOut(Ball ball){
 
     public void MoveBall()
     {
+        CurrentX = Ball.getX();
+        CurrentY = Ball.getY();
         Ball.moveBy(SpeedX,SpeedY);
 
     }
