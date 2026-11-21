@@ -29,7 +29,6 @@ public class Window {
         LivesCounter.setFillColor(new Color(255,255,255));
 
         this.Pladdle = new Paddle(175, 400, 75, 15);
-        Pladdle.getGraphics().setFillColor(new Color(255,255,255));
 
         this.attack = new Ball(0,0);
 
@@ -110,7 +109,6 @@ public class Window {
         Counter.setPoints(amount);
         Counter.IsPointMax();
         PointsCounter.setText("Points: "+Counter.getPoints());
-        LivesCounter.setText("Points: "+Counter.getLives());
     return this;}
 
     public Window updateLivesCounter()
