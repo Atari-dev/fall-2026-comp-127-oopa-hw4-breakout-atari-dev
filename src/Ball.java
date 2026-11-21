@@ -16,7 +16,7 @@ public class Ball extends Collision
     private double CurrentY;
 
     public Ball(int SpeedX,int SpeedY)   {
-        this.Ball = new Ellipse(0, 0, diameter, diameter);
+        this.Ball = new Ellipse(-40, -40, diameter, diameter);
         this.Ball.setFillColor(new Color(100,200,52));
         this.SpeedX=SpeedX;
         this.SpeedY=SpeedY;
@@ -66,20 +66,36 @@ public boolean Collide(Brick Defender) {
         return delete;
     }
 
-double cx = getGraphics().getCenter().getX();
-double cy = getGraphics().getCenter().getY();
-boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
-boolean hitBottom = Defender.getGraphics().testHit(cx, cy + radius);
-boolean hitLeft = Defender.getGraphics().testHit(cx - radius, cy);
-boolean hitRight = Defender.getGraphics().testHit(cx + radius, cy);
+CurrentX = getGraphics().getCenter().getX();
+CurrentY = getGraphics().getCenter().getY();
+boolean hitTop = Defender.getGraphics().testHit(CurrentX, CurrentY - radius);
+boolean hitBottom = Defender.getGraphics().testHit(CurrentX, CurrentY + radius);
+boolean hitLeft = Defender.getGraphics().testHit(CurrentX- radius, CurrentY);
+boolean hitRight = Defender.getGraphics().testHit(CurrentX+ radius, CurrentY);
 
-
-
-if (hitTop || hitBottom ) {
+if (hitTop)
+{
     ReverseY();
    delete = true;
 }
-else if (hitLeft || hitRight) {
+else if (hitBottom)
+{
+    ReverseY();
+   delete = true;
+}
+
+else if (hitRight)
+{
+    ReverseX();
+   delete = true;
+}
+else if (hitLeft)
+{
+        ReverseX();
+    delete = true;
+}
+else if (hitRight)
+{
     ReverseX();
     delete = true;
 }
@@ -94,13 +110,10 @@ public boolean IsCollided(Brick Defender) {
     {
         return delete;
     }
-
-double cx = getGraphics().getCenter().getX();
-double cy = getGraphics().getCenter().getY();
-boolean hitTop = Defender.getGraphics().testHit(cx, cy - radius);
-boolean hitBottom = Defender.getGraphics().testHit(cx, cy + radius);
-boolean hitLeft = Defender.getGraphics().testHit(cx - radius, cy);
-boolean hitRight = Defender.getGraphics().testHit(cx + radius, cy);
+boolean hitTop = Defender.getGraphics().testHit(CurrentX, CurrentY - radius);
+boolean hitBottom = Defender.getGraphics().testHit(CurrentX, CurrentY + radius);
+boolean hitLeft = Defender.getGraphics().testHit(CurrentX- radius, CurrentY);
+boolean hitRight = Defender.getGraphics().testHit(CurrentX+ radius, CurrentY);
 
 
 
@@ -115,19 +128,33 @@ else if (hitLeft || hitRight) {
 
 
 public void Collide(Paddle Bonker) {
-double cx = getGraphics().getCenter().getX();
+double CurrentX= getGraphics().getCenter().getX();
 double cy = getGraphics().getCenter().getY();
 boolean hitTop = Bonker.getGraphics().testHit(cx, cy - radius);
 boolean hitBottom = Bonker.getGraphics().testHit(cx, cy + radius);
-boolean hitLeft = Bonker.getGraphics().testHit(cx - radius, cy);
-boolean hitRight = Bonker.getGraphics().testHit(cx + radius, cy);
+boolean hitLeft = Bonker.getGraphics().testHit(CurrentX- radius, cy);
+boolean hitRight = Bonker.getGraphics().testHit(CurrentX+ radius, cy);
 
-
-
-if (hitTop || hitBottom ) {
+if (hitTop && hitLeft)
+if (hitTop)
+{
     ReverseY();
 }
-else if (hitLeft || hitRight) {
+else if (hitBottom)
+{
+    ReverseY();
+}
+
+else if (hitRight)
+{
+    ReverseX();
+}
+else if (hitLeft)
+{
+    ReverseX();
+}
+else if (hitRight)
+{
     ReverseX();
 }
     }

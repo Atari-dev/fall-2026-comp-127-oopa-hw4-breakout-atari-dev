@@ -11,20 +11,25 @@ public class Window {
     private GraphicsGroup background;
     private Button start;
     private GraphicsText PointsCounter;
+    private GraphicsText LivesCounter;
     private int i;
     private LivingCounter Counter = new LivingCounter(3);
     protected Ball attack;
     protected Paddle Pladdle;
+    
     public Window()
     {
         //rn assumes size is 500
         this.PointsCounter = new GraphicsText("Points: "+Counter.getPoints());
         PointsCounter.setFont(FontStyle.PLAIN,15);
 
-        this.Pladdle = new Paddle(175, 400, 75, 30);
+        this.LivesCounter = new GraphicsText("Lives: "+Counter.getLives());
+        LivesCounter.setFont(FontStyle.PLAIN,15);
+
+        this.Pladdle = new Paddle(175, 400, 75, 15);
         Pladdle.getGraphics().setFillColor(new Color(255,255,255));
 
-        this.attack = new Ball(5,-5);
+        this.attack = new Ball(0,0);
 
         background = new GraphicsGroup();
 
@@ -32,7 +37,6 @@ public class Window {
              start.onClick(() -> SendToGame());
 
         background.add(start,500*0.4,250);
-        background.add(attack.getGraphics(),150,300);
         background.add(Pladdle.getGraphics());
         for (i = 0; i != 50; i++) {
             if (i < 10 && i <20)
@@ -77,17 +81,39 @@ public class Window {
                 }
         }
         background.add(PointsCounter,10,485);
+        background.add(LivesCounter,440,485);
     }
     public GraphicsGroup getBackground(){return background;}
     public boolean SendToGame()    {
         background.remove(start);
+        this.attack = new Ball(5,-5);
+        background.add(attack.getGraphics(),250,250);
         return true;
     }
 
-    public void updateCounter(int amount)
+    public Window BallOut(Ball ball)
+    {
+        if (ball.getGraphics().getY() >= 420) 
+            {
+                Counter.LoseLife();
+                ball.getGraphics().setPosition(250,250);
+                ball.ReverseY();
+            }
+
+        
+    return this;}
+
+    public Window updatePointsCounter(int amount)
     {
         Counter.setPoints(amount);
         Counter.IsPointMax();
         PointsCounter.setText("Points: "+Counter.getPoints());
-    }
+        LivesCounter.setText("Points: "+Counter.getLives());
+    return this;}
+
+    public Window updateLivesCounter()
+    {
+        LivesCounter.setText("Lives: "+Counter.getLives());
+    return this;}
+    
 }
