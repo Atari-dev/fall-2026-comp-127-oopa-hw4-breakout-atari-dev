@@ -10,16 +10,16 @@ import java.awt.Color;
 public class Window {
     private GraphicsGroup background;
     private Button start;
+    private GraphicsText PointsCounter;
     private int i;
+    private LivingCounter Counter = new LivingCounter(3);
     protected Ball attack;
-    protected Ball attack2;
-    protected Brick test;
     protected Paddle Pladdle;
-
     public Window()
     {
         //rn assumes size is 500
-
+        this.PointsCounter = new GraphicsText("Points: "+Counter.getPoints());
+        PointsCounter.setFont(FontStyle.PLAIN,49);
         this.Pladdle = new Paddle(175, 400, 75, 30);
         Pladdle.getGraphics().setFillColor(new Color(255,255,255));
         this.attack = new Ball(5,-5);
@@ -27,12 +27,10 @@ public class Window {
         background = new GraphicsGroup();
           start = new Button("Start Game!");
              start.onClick(() -> SendToGame());
-        this.test = new Brick(0,0, 20, 25);
+
         background.add(start,500*0.4,250);
         background.add(attack.getGraphics(),150,300);
-        background.add(test.getGraphics(),150,40);
         background.add(Pladdle.getGraphics());
-
         for (i = 0; i != 50; i++) {
             if (i < 10 && i <20)
                 {
@@ -75,10 +73,10 @@ public class Window {
                 System.out.println("step 5");
                 }
         }
+        background.add(PointsCounter,50,50);
     }
     public GraphicsGroup getBackground(){return background;}
     public boolean SendToGame()    {
-        System.out.print("Your did it!");
         background.remove(start);
         return true;
     }
