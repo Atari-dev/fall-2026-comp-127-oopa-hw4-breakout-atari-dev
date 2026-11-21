@@ -104,12 +104,11 @@ public class Window {
         
     return this;}
 
-    public Window updatePointsCounter(int amount)
+    public boolean updatePointsCounter(int amount)
     {
         Counter.setPoints(amount);
-        Counter.IsPointMax();
         PointsCounter.setText("Points: "+Counter.getPoints());
-    return this;}
+    return Counter.IsPointMax();}
 
     public Window updateLivesCounter()
     {

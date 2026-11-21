@@ -31,7 +31,7 @@ public class LivingCounter {
 
     public boolean IsPointMax()
     {
-        if (Points >= 5000) 
+        if (Points >= 10) 
             {
                 resetGameState();
                 Points=0;
@@ -42,7 +42,6 @@ public class LivingCounter {
     
     private void resetGameState()
     {
-
     }
 
 }

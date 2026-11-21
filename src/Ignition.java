@@ -11,6 +11,7 @@ public class Ignition {
     {
         canvas = new CanvasWindow("Breaking Out!", size, size);
 
+
     }
     public static void main(String[] args) {
         new Ignition();
@@ -18,6 +19,7 @@ public class Ignition {
         canvas.setBackground(new Color(0,0,0));
         canvas.add(MainWindow.getBackground());
         canvas.animate(dt -> {
+            
                 if (canvas.getKeysPressed().contains(Key.LEFT_ARROW))
                     {
                         MainWindow.Pladdle.getGraphics().moveBy(-4,0);
@@ -30,13 +32,19 @@ public class Ignition {
             MainWindow.BallOut(MainWindow.attack).updateLivesCounter();
             MainWindow.attack.Collide(MainWindow.attack);
             MainWindow.attack.Collide(MainWindow.Pladdle);
+
             TileSet.forEach( brick -> {
                 if (MainWindow.attack.IsCollided(brick) && brick.getGraphics() != null)
                 {
+
                     try {
                     MainWindow.getBackground().remove(brick.getGraphics());
                     MainWindow.attack.Collide(brick);
-                    MainWindow.updatePointsCounter(10);
+                    
+                    if(MainWindow.updatePointsCounter(10))
+                    {
+                        
+                    }
                     } catch (Exception e) {
 
                     }
