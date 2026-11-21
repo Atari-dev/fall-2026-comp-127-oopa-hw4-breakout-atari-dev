@@ -4,9 +4,9 @@ import edu.macalester.graphics.*;
 import edu.macalester.*;
 import edu.macalester.graphics.ui.Button;
 import java.awt.*;
-import edu.macalester.graphics.Rectangle;
+import java.awt.Point;
 
-import java.awt.Color;
+import edu.macalester.graphics.Rectangle;
 public class Window {
     private GraphicsGroup background;
     private Button start;
@@ -19,12 +19,15 @@ public class Window {
     {
         //rn assumes size is 500
         this.PointsCounter = new GraphicsText("Points: "+Counter.getPoints());
-        PointsCounter.setFont(FontStyle.PLAIN,49);
+        PointsCounter.setFont(FontStyle.PLAIN,15);
+
         this.Pladdle = new Paddle(175, 400, 75, 30);
         Pladdle.getGraphics().setFillColor(new Color(255,255,255));
+
         this.attack = new Ball(5,-5);
 
         background = new GraphicsGroup();
+
           start = new Button("Start Game!");
              start.onClick(() -> SendToGame());
 
@@ -73,7 +76,7 @@ public class Window {
                 System.out.println("step 5");
                 }
         }
-        background.add(PointsCounter,50,50);
+        background.add(PointsCounter,10,485);
     }
     public GraphicsGroup getBackground(){return background;}
     public boolean SendToGame()    {
@@ -81,4 +84,10 @@ public class Window {
         return true;
     }
 
+    public void updateCounter(int amount)
+    {
+        Counter.setPoints(amount);
+        Counter.IsPointMax();
+        PointsCounter.setText("Points: "+Counter.getPoints());
+    }
 }
