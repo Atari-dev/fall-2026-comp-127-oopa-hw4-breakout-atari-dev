@@ -128,12 +128,12 @@ else if (hitLeft || hitRight) {
 
 
 public void Collide(Paddle Bonker) {
-double CurrentX= getGraphics().getCenter().getX();
-double cy = getGraphics().getCenter().getY();
-boolean hitTop = Bonker.getGraphics().testHit(cx, cy - radius);
-boolean hitBottom = Bonker.getGraphics().testHit(cx, cy + radius);
-boolean hitLeft = Bonker.getGraphics().testHit(CurrentX- radius, cy);
-boolean hitRight = Bonker.getGraphics().testHit(CurrentX+ radius, cy);
+CurrentX= getGraphics().getCenter().getX();
+CurrentY = getGraphics().getCenter().getY();
+boolean hitTop = Bonker.getGraphics().testHit(CurrentX, CurrentY - radius);
+boolean hitBottom = Bonker.getGraphics().testHit(CurrentX, CurrentY + radius);
+boolean hitLeft = Bonker.getGraphics().testHit(CurrentX- radius, CurrentY);
+boolean hitRight = Bonker.getGraphics().testHit(CurrentX+ radius, CurrentY);
 
 if (hitTop && hitLeft)
 if (hitTop)
