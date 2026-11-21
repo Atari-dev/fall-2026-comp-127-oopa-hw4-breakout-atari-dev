@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import edu.macalester.graphics.*;
 import edu.macalester.graphics.events.Key;
@@ -14,6 +15,7 @@ public class Ignition {
     public static void main(String[] args) {
         new Ignition();
         Window MainWindow = new Window();
+        canvas.setBackground(new Color(0,0,0));
         canvas.add(MainWindow.getBackground());
         canvas.animate(dt -> {
                 if (canvas.getKeysPressed().contains(Key.LEFT_ARROW))

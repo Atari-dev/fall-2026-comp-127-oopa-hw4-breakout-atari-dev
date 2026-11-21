@@ -22,9 +22,11 @@ public class Window {
         //rn assumes size is 500
         this.PointsCounter = new GraphicsText("Points: "+Counter.getPoints());
         PointsCounter.setFont(FontStyle.PLAIN,15);
+        PointsCounter.setFillColor(new Color(255,255,255));
 
         this.LivesCounter = new GraphicsText("Lives: "+Counter.getLives());
         LivesCounter.setFont(FontStyle.PLAIN,15);
+        LivesCounter.setFillColor(new Color(255,255,255));
 
         this.Pladdle = new Paddle(175, 400, 75, 15);
         Pladdle.getGraphics().setFillColor(new Color(255,255,255));

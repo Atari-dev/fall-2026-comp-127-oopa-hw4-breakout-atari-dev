@@ -17,7 +17,7 @@ public class Ball extends Collision
 
     public Ball(int SpeedX,int SpeedY)   {
         this.Ball = new Ellipse(-40, -40, diameter, diameter);
-        this.Ball.setFillColor(new Color(100,200,52));
+        this.Ball.setFillColor(new Color(0,255,0));
         this.SpeedX=SpeedX;
         this.SpeedY=SpeedY;
     }
