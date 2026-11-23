@@ -8,11 +8,6 @@ public class LivingCounter {
         this.Lives=Lives;
     }
 
-    public void update()
-    {
-        
-    }
-
     public int getPoints() {return Points;}
     
     public int getLives(){return Lives;}
