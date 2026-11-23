@@ -2,8 +2,7 @@ public class LivingCounter {
     private int Points;
     private int Lives;
 
-    LivingCounter(int Lives)
-    {
+    LivingCounter(int Lives) {
         Points=0;
         this.Lives=Lives;
     }
@@ -13,21 +12,17 @@ public class LivingCounter {
     public int getLives(){return Lives;}
 
 
-    public void setPoints(int amount)
-    {
+    public void setPoints(int amount) {
         Points+=amount;
     }
 
-    public void LoseLife()
-    {
+    public void LoseLife() {
         Lives--;
     }
 
 
-    public boolean IsPointMax()
-    {
-        if (Points >= 5000) 
-            {
+    public boolean IsPointMax() {
+        if (Points >= 500) {
                 return true;
             }
         else return false;
