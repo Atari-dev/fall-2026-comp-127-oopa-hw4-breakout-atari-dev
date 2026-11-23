@@ -3,25 +3,26 @@ import edu.macalester.graphics.ui.Button;
 import java.awt.*;
 
 public class Window {
+
     private GraphicsGroup background;
     private Button start;
-    private GraphicsText PointsCounter;
-    private GraphicsText LivesCounter;
+    private GraphicsText pointsCounter;
+    private GraphicsText livesCounter;
     private int i;
-    private LivingCounter Counter = new LivingCounter(3);
+    private LivingCounter counter = new LivingCounter(3);
     private Ball attack;
-    private Paddle Pladdle;
+    private Paddle pladdle;
     
     public Window() {
-        this.PointsCounter = new GraphicsText("Points: "+Counter.getPoints());
-        PointsCounter.setFont(FontStyle.PLAIN,15);
-        PointsCounter.setFillColor(new Color(255,255,255));
+        this.pointsCounter = new GraphicsText("Points: "+counter.getPoints());
+        pointsCounter.setFont(FontStyle.PLAIN,15);
+        pointsCounter.setFillColor(new Color(255,255,255));
 
-        this.LivesCounter = new GraphicsText("Lives: "+Counter.getLives());
-        LivesCounter.setFont(FontStyle.PLAIN,15);
-        LivesCounter.setFillColor(new Color(255,255,255));
+        this.livesCounter = new GraphicsText("Lives: "+counter.getLives());
+        livesCounter.setFont(FontStyle.PLAIN,15);
+        livesCounter.setFillColor(new Color(255,255,255));
 
-        this.Pladdle = new Paddle(175, 400, 75, 15);
+        this.pladdle = new Paddle(175, 400, 75, 15);
 
         this.attack = new Ball(0,0);
 
@@ -31,48 +32,48 @@ public class Window {
              start.onClick(() -> SendToGame());
 
         background.add(start,500*0.4,250);
-        background.add(Pladdle.getGraphics());
+        background.add(pladdle.getGraphics());
         for (i = 0; i != 50; i++) {
             if (i < 10 && i <20) {
                 Brick victim = new Brick(0,0,50,15);
                 victim.getGraphics().setFillColor(new Color(0, 145, 235));
                 background.add(victim.getGraphics(),i*50,0);
-                BreakoutMain.TileSet.add(victim);
+                BreakoutMain.tileSet.add(victim);
                 }
             else if (i >= 10 && i < 20) {
                 Brick victim = new Brick(0,0,50,15);
                 victim.getGraphics().setFillColor(new Color(209, 0, 112));
                 background.add(victim.getGraphics(),(i-10)*50,15);
-                BreakoutMain.TileSet.add(victim);
+                BreakoutMain.tileSet.add(victim);
                 }
             else if (i >= 20 && i < 30) {
                 Brick victim = new Brick(0,0,50,15);
                 victim.getGraphics().setFillColor(new Color(209, 0, 112));
                 background.add(victim.getGraphics(),(i-20)*50,30);
-                BreakoutMain.TileSet.add(victim);
+                BreakoutMain.tileSet.add(victim);
                 }
             else if (i >= 30 && i < 40) {
                 Brick victim = new Brick(0,0,50,15);
                 background.add(victim.getGraphics(),(i-30)*50,45);
                 victim.getGraphics().setFillColor(new Color(64, 21, 92));
-                BreakoutMain.TileSet.add(victim);
+                BreakoutMain.tileSet.add(victim);
                 }
             else if (i >= 40 && i < 50) {
                 Brick victim = new Brick(0,0,50,15);
                 background.add(victim.getGraphics(),(i-40)*50,60);
                 victim.getGraphics().setFillColor(new Color(64, 21, 92));
-                BreakoutMain.TileSet.add(victim);
+                BreakoutMain.tileSet.add(victim);
                 }
         }
-        background.add(PointsCounter,10,485);
-        background.add(LivesCounter,440,485);
+        background.add(pointsCounter,10,485);
+        background.add(livesCounter,440,485);
     }
 
     public GraphicsGroup getBackground() {return background;}
 
     public Ball getBall() {return this.attack;}
 
-    public Paddle getPaddle() {return this.Pladdle;}
+    public Paddle getPaddle() {return this.pladdle;}
 
     
     public boolean SendToGame() {
@@ -86,7 +87,7 @@ public class Window {
 
         if (ball.getGraphics().getY() >= 420) {
 
-                Counter.LoseLife();
+                counter.LoseLife();
                 ball.getGraphics().setPosition(250,250);
                 ball.ReverseY();
             }
@@ -97,14 +98,14 @@ public class Window {
 
     public boolean updatePointsCounter(int amount) {
 
-        Counter.setPoints(amount);
-        PointsCounter.setText("Points: "+Counter.getPoints());
-    return Counter.IsPointMax();}
+        counter.setPoints(amount);
+        pointsCounter.setText("Points: "+counter.getPoints());
+    return counter.IsPointMax();}
 
     public boolean updateLivesCounter() {
 
-        LivesCounter.setText("Lives: "+Counter.getLives());
-        if (Counter.getLives() == 0) {
+        livesCounter.setText("Lives: "+counter.getLives());
+        if (counter.getLives() == 0) {
             return true;
         }
     return false;
