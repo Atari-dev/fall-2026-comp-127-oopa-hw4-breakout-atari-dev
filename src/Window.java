@@ -110,9 +110,13 @@ public class Window {
         PointsCounter.setText("Points: "+Counter.getPoints());
     return Counter.IsPointMax();}
 
-    public Window updateLivesCounter()
+    public boolean updateLivesCounter()
     {
         LivesCounter.setText("Lives: "+Counter.getLives());
-    return this;}
+        if (Counter.getLives() == 0)
+        {
+            return true;
+        }
+    return false;}
     
 }

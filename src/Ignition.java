@@ -6,6 +6,7 @@ import edu.macalester.graphics.events.Key;
 public class Ignition {
     private static CanvasWindow canvas;
     private static int size=500;
+    private static Window MainWindow;
     protected static ArrayList<Brick> TileSet = new ArrayList<Brick>();
     public Ignition()
     {
@@ -15,21 +16,26 @@ public class Ignition {
     }
     public static void main(String[] args) {
         new Ignition();
-        Window MainWindow = new Window();
+        MainWindow = new Window();
         canvas.setBackground(new Color(0,0,0));
         canvas.add(MainWindow.getBackground());
         canvas.animate(dt -> {
-            
                 if (canvas.getKeysPressed().contains(Key.LEFT_ARROW))
                     {
-                        MainWindow.Pladdle.getGraphics().moveBy(-4,0);
+                        MainWindow.Pladdle.getGraphics().moveBy(-5,0);
                     };
             
                 if (canvas.getKeysPressed().contains(Key.RIGHT_ARROW))
                     {
-                        MainWindow.Pladdle.getGraphics().moveBy(4,0);
+                        MainWindow.Pladdle.getGraphics().moveBy(5,0);
                     };
-            MainWindow.BallOut(MainWindow.attack).updateLivesCounter();
+            if (MainWindow.BallOut(MainWindow.attack).updateLivesCounter() || MainWindow.updatePointsCounter(0))
+            {
+                canvas.removeAll();
+                MainWindow = new Window();
+                canvas.add(MainWindow.getBackground());
+                
+            }
             MainWindow.attack.Collide(MainWindow.attack);
             MainWindow.attack.Collide(MainWindow.Pladdle);
 

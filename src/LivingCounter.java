@@ -31,17 +31,11 @@ public class LivingCounter {
 
     public boolean IsPointMax()
     {
-        if (Points >= 10) 
+        if (Points >= 5000) 
             {
-                resetGameState();
-                Points=0;
                 return true;
             }
         else return false;
-    }
-    
-    private void resetGameState()
-    {
     }
 
 }
