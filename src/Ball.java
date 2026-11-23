@@ -3,35 +3,35 @@ import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
 
 public class Ball {
-    private Ellipse Ball;
+    private Ellipse ball;
     private int diameter = 16;
     private int radius = diameter / 2;
-    private double SpeedX;
-    private double SpeedY;
-    private double CurrentX;
-    private double CurrentY;
+    private double speedX;
+    private double speedY;
+    private double currentX;
+    private double currentY;
 
-    public Ball(int SpeedX, int SpeedY) {
-        this.Ball = new Ellipse(-40, -40, diameter, diameter);
-        this.Ball.setFillColor(new Color(0, 255, 0));
-        this.SpeedX = SpeedX;
-        this.SpeedY = SpeedY;
+    public Ball(int speedX, int speedY) {
+        this.ball = new Ellipse(-40, -40, diameter, diameter);
+        this.ball.setFillColor(new Color(0, 255, 0));
+        this.speedX = speedX;
+        this.speedY = speedY;
     }
 
-    public int IsBallOut(Ball ball) {
-        CurrentX = Ball.getCenter().getX();
-        CurrentY = Ball.getCenter().getY();
+    public int IsBallOut(Ball ballIn) {
+        currentX = ball.getCenter().getX();
+        currentY = ball.getCenter().getY();
         int result = 0;
-        if ((CurrentY + radius >= 500 || CurrentX + radius >= 500)) {
-            if (CurrentY >= CurrentX)
+        if ((currentY + radius >= 500 || currentX + radius >= 500)) {
+            if (currentY >= currentX)
                 result = 1;
             else
                 result = 2;
         } else
             result = 0;
 
-        if (CurrentY - radius <= 0 || CurrentX - radius <= 0) {
-            if (CurrentY <= CurrentX)
+        if (currentY - radius <= 0 || currentX - radius <= 0) {
+            if (currentY <= currentX)
                 result = 1;
             else
                 result = 2;
@@ -50,18 +50,18 @@ public class Ball {
             this.MoveBall();
     }
 
-    public boolean Collide(Brick Defender) {
+    public boolean Collide(Brick defender) {
         boolean delete = false;
-        if (Defender.getGraphics().equals(null)) {
+        if (defender.getGraphics().equals(null)) {
             return delete;
         }
 
-        CurrentX = getGraphics().getCenter().getX();
-        CurrentY = getGraphics().getCenter().getY();
-        boolean hitTop = Defender.getGraphics().testHit(CurrentX, CurrentY - radius);
-        boolean hitBottom = Defender.getGraphics().testHit(CurrentX, CurrentY + radius);
-        boolean hitLeft = Defender.getGraphics().testHit(CurrentX - radius, CurrentY);
-        boolean hitRight = Defender.getGraphics().testHit(CurrentX + radius, CurrentY);
+        currentX = getGraphics().getCenter().getX();
+        currentY = getGraphics().getCenter().getY();
+        boolean hitTop = defender.getGraphics().testHit(currentX, currentY - radius);
+        boolean hitBottom = defender.getGraphics().testHit(currentX, currentY + radius);
+        boolean hitLeft = defender.getGraphics().testHit(currentX - radius, currentY);
+        boolean hitRight = defender.getGraphics().testHit(currentX + radius, currentY);
 
         if (hitTop) {
             ReverseY();
@@ -84,15 +84,15 @@ public class Ball {
         return delete;
     }
 
-    public boolean IsCollided(Brick Defender) {
+    public boolean IsCollided(Brick defender) {
         boolean delete = false;
-        if (Defender.getGraphics().equals(null)) {
+        if (defender.getGraphics().equals(null)) {
             return delete;
         }
-        boolean hitTop = Defender.getGraphics().testHit(CurrentX, CurrentY - radius);
-        boolean hitBottom = Defender.getGraphics().testHit(CurrentX, CurrentY + radius);
-        boolean hitLeft = Defender.getGraphics().testHit(CurrentX - radius, CurrentY);
-        boolean hitRight = Defender.getGraphics().testHit(CurrentX + radius, CurrentY);
+        boolean hitTop = defender.getGraphics().testHit(currentX, currentY - radius);
+        boolean hitBottom = defender.getGraphics().testHit(currentX, currentY + radius);
+        boolean hitLeft = defender.getGraphics().testHit(currentX - radius, currentY);
+        boolean hitRight = defender.getGraphics().testHit(currentX + radius, currentY);
 
         if (hitTop || hitBottom) {
             delete = true;
@@ -102,13 +102,13 @@ public class Ball {
         return delete;
     }
 
-    public void Collide(Paddle Bonker) {
-        CurrentX = getGraphics().getCenter().getX();
-        CurrentY = getGraphics().getCenter().getY();
+    public void Collide(Paddle bonker) {
+        currentX = getGraphics().getCenter().getX();
+        currentY = getGraphics().getCenter().getY();
 
-        boolean hitBottom = Bonker.getGraphics().testHit(CurrentX, CurrentY + radius);
-        boolean hitLeft = Bonker.getGraphics().testHit(CurrentX - radius, CurrentY);
-        boolean hitRight = Bonker.getGraphics().testHit(CurrentX + radius, CurrentY);
+        boolean hitBottom = bonker.getGraphics().testHit(currentX, currentY + radius);
+        boolean hitLeft = bonker.getGraphics().testHit(currentX - radius, currentY);
+        boolean hitRight = bonker.getGraphics().testHit(currentX + radius, currentY);
 
         if (hitBottom) {
             ReverseY();
@@ -121,7 +121,7 @@ public class Ball {
     }
 
     public GraphicsObject getGraphics() {
-        return Ball;
+        return ball;
     }
 
     public int getRadius() {
@@ -129,25 +129,25 @@ public class Ball {
     }
 
     public double getSpeedY() {
-        return SpeedY;
+        return speedY;
     }
 
     public double getSpeedX() {
-        return SpeedX;
+        return speedX;
     }
 
     public void ReverseY() {
-        SpeedY *= -1;
+        speedY *= -1;
     }
 
     public void ReverseX() {
-        SpeedX *= -1;
+        speedX *= -1;
     }
 
     public void MoveBall() {
-        CurrentX = Ball.getX();
-        CurrentY = Ball.getY();
-        Ball.moveBy(SpeedX, SpeedY);
+        currentX = ball.getX();
+        currentY = ball.getY();
+        ball.moveBy(speedX, speedY);
 
     }
 }
