@@ -38,11 +38,11 @@ public class Window {
 
         background.add(start, 500 * 0.4, 250);
         background.add(pladdle.getGraphics());
-        for (i = 0; i != 50; i++) {
+        for (i = 10; i != 50; i++) {
             if (i < 10 && i < 20) {
                 Brick victim = new Brick(0, 0, 50, 15);
                 victim.getGraphics().setFillColor(new Color(0, 145, 235));
-                background.add(victim.getGraphics(), i * 50, 0);
+                background.add(victim.getGraphics(), (i * 50), 0);
                 BreakoutMain.tileSet.add(victim);
             } else if (i >= 10 && i < 20) {
                 Brick victim = new Brick(0, 0, 50, 15);

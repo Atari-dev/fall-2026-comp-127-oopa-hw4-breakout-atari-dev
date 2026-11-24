@@ -5,12 +5,13 @@ import edu.macalester.graphics.events.Key;
 
 public class BreakoutMain {
     private static CanvasWindow canvas;
-    private int size = 500;
+    private int sizeX = 500;
+    private int sizeY = 500;
     private static Window mainWindow;
     public static ArrayList<Brick> tileSet = new ArrayList<Brick>();
 
     public BreakoutMain() {
-        canvas = new CanvasWindow("Breaking Out!", size, size);
+        canvas = new CanvasWindow("Breaking Out!", sizeX, sizeY);
     }
 
     public static void main(String[] args) {
