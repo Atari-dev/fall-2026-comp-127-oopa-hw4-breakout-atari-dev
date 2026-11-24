@@ -1,6 +1,15 @@
 import java.awt.Color;
 import edu.macalester.graphics.*;
 
+/**
+ * The players movable paddle used to hit the ball up
+ * @param x
+ * @param y
+ * @param width
+ * @param height
+ * @return A Paddle with graphics attached.
+ */
+
 public class Paddle {
     private Rectangle rect;
 

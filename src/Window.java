@@ -2,6 +2,12 @@ import edu.macalester.graphics.*;
 import edu.macalester.graphics.ui.Button;
 import java.awt.*;
 
+
+/**
+ * The main container for the graphics objects and all active game objects.
+ * also creates and stores the rows of bricks used in the game.
+ */
+
 public class Window {
 
     private GraphicsGroup background;
