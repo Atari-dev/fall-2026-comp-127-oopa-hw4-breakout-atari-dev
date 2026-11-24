@@ -90,7 +90,7 @@ public class Window {
     }
 
     /**
-     * Checks and updates game state when the ball moves below the paddles Y position.
+     * Checks for when the ball moves below the paddles Y position and updates game state.
      */
     public Window BallOut(Ball ball) {
 

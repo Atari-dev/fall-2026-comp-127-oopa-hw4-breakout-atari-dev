@@ -13,7 +13,7 @@ import edu.macalester.graphics.GraphicsObject;
 
 public class Ball {
     private Ellipse ball;
-    private int diameter = 16;
+    private final int diameter = 16;
     private int radius = diameter / 2;
     private double speedX;
     private double speedY;
