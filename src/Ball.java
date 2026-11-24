@@ -8,7 +8,7 @@ import edu.macalester.graphics.GraphicsObject;
  * 
  * @param speedX
  * @param speedY
- * @return a Ball object with graphics and collison logic
+ * @return a Ball object with graphics and collison logic.
  */
 
 public class Ball {
@@ -29,8 +29,8 @@ public class Ball {
 
     /**
      * Tests if the ball is out of bounds and sets a number from 0-2, 0 meaning in
-     * bounds, 1 meaning out of bounds on the bottom and right,
-     * 2 meaning out of bounds on the left and top.
+     * bounds, 1 meaning out of bounds on the bottom and right edge of the ball,
+     * 2 meaning out of bounds on the left and top edge of the ball.
      */
     public int isBallOut(Ball ballIn) {
         currentX = ball.getCenter().getX();
