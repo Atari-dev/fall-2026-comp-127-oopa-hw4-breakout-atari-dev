@@ -38,30 +38,30 @@ public class Window {
 
         background.add(start, 500 * 0.4, 250);
         background.add(pladdle.getGraphics());
-        for (i = 10; i != 50; i++) {
+        for (i = 0; i != 50; i++) {
             if (i < 10 && i < 20) {
                 Brick victim = new Brick(0, 0, 50, 15);
                 victim.getGraphics().setFillColor(new Color(0, 145, 235));
-                background.add(victim.getGraphics(), (i * 50), 0);
+                background.add(victim.getGraphics(), (i * 50), 30);
                 BreakoutMain.tileSet.add(victim);
             } else if (i >= 10 && i < 20) {
                 Brick victim = new Brick(0, 0, 50, 15);
                 victim.getGraphics().setFillColor(new Color(209, 0, 112));
-                background.add(victim.getGraphics(), (i - 10) * 50, 15);
+                background.add(victim.getGraphics(), (i - 10) * 50, 45);
                 BreakoutMain.tileSet.add(victim);
             } else if (i >= 20 && i < 30) {
                 Brick victim = new Brick(0, 0, 50, 15);
                 victim.getGraphics().setFillColor(new Color(209, 0, 112));
-                background.add(victim.getGraphics(), (i - 20) * 50, 30);
+                background.add(victim.getGraphics(), (i - 20) * 50, 60);
                 BreakoutMain.tileSet.add(victim);
             } else if (i >= 30 && i < 40) {
                 Brick victim = new Brick(0, 0, 50, 15);
-                background.add(victim.getGraphics(), (i - 30) * 50, 45);
+                background.add(victim.getGraphics(), (i - 30) * 50, 75);
                 victim.getGraphics().setFillColor(new Color(64, 21, 92));
                 BreakoutMain.tileSet.add(victim);
             } else if (i >= 40 && i < 50) {
                 Brick victim = new Brick(0, 0, 50, 15);
-                background.add(victim.getGraphics(), (i - 40) * 50, 60);
+                background.add(victim.getGraphics(), (i - 40) * 50, 90);
                 victim.getGraphics().setFillColor(new Color(64, 21, 92));
                 BreakoutMain.tileSet.add(victim);
             }
