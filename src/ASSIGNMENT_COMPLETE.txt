@@ -1,0 +1,14 @@
+While working on this assignment:
+
+Yes - I did not look at anybody else's solution.
+Yes - I did not copy code from any existing implementation of Breakout.
+Yes - I did not use generative AI to write any code.
+
+I used the following help and outside resources:
+
+- Google
+- W3 Schools
+- Java API
+- Kilt Graphics API
+
+Tari Ziehl
