@@ -1,5 +1,6 @@
 /**
- * Keeps track of both Points and Lives, and increments/decrements them as needed.
+ * Keeps track of both Points and Lives, and increments/decrements them as
+ * needed.
  */
 
 public class LivingCounter {

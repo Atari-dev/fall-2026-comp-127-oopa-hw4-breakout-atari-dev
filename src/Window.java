@@ -81,9 +81,10 @@ public class Window {
     public Paddle getPaddle() {
         return this.pladdle;
     }
-/**
- * Starts the game.
- */
+
+    /**
+     * Starts the game.
+     */
     public boolean sendToGame() {
         background.remove(start);
         this.attack = new Ball(5, -5);
@@ -92,7 +93,8 @@ public class Window {
     }
 
     /**
-     * Checks for when the ball moves below the paddles Y position and updates game state.
+     * Checks for when the ball moves below the paddles Y position and updates game
+     * state.
      */
     public Window BallOut(Ball ball) {
 
