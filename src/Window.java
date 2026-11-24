@@ -81,7 +81,9 @@ public class Window {
     public Paddle getPaddle() {
         return this.pladdle;
     }
-
+/**
+ * Starts the game.
+ */
     public boolean sendToGame() {
         background.remove(start);
         this.attack = new Ball(5, -5);
