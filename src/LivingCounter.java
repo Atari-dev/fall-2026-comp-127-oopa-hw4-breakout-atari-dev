@@ -28,7 +28,7 @@ public class LivingCounter {
         lives--;
     }
 
-    public boolean isPointMax() {
+    public boolean isPointsMax() {
         if (points >= 500) {
             return true;
         } else

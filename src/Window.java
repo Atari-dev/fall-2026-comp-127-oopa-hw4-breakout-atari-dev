@@ -108,7 +108,7 @@ public class Window {
 
         counter.setPoints(amount);
         pointsCounter.setText("Points: " + counter.getPoints());
-        return counter.isPointMax();
+        return counter.isPointsMax();
     }
 
     public boolean updateLivesCounter() {
