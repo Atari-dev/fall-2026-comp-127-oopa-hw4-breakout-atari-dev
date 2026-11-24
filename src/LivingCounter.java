@@ -24,11 +24,11 @@ public class LivingCounter {
         points += amount;
     }
 
-    public void LoseLife() {
+    public void loseLife() {
         lives--;
     }
 
-    public boolean IsPointMax() {
+    public boolean isPointMax() {
         if (points >= 500) {
             return true;
         } else

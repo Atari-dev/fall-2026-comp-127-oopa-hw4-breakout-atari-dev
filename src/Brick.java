@@ -2,6 +2,7 @@ import edu.macalester.graphics.*;
 
 /**
  * A brick to be drawn to the screen and hit for points.
+ * 
  * @param x
  * @param y
  * @param width

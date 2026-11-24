@@ -3,6 +3,7 @@ import edu.macalester.graphics.*;
 
 /**
  * The players movable paddle used to hit the ball up
+ * 
  * @param x
  * @param y
  * @param width

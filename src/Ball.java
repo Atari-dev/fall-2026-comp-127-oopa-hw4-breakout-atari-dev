@@ -1,15 +1,15 @@
 import java.awt.Color;
+
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
 
-
 /**
  * The ball that bounces around the screen.
+ * 
  * @param speedX
  * @param speedY
  * @return a Ball object with graphics and collison logic
  */
-
 
 public class Ball {
     private Ellipse ball;
@@ -27,7 +27,12 @@ public class Ball {
         this.speedY = speedY;
     }
 
-    public int IsBallOut(Ball ballIn) {
+    /**
+     * Tests if the ball is out of bounds and sets a number from 0-2, 0 meaning in
+     * bounds, 1 meaning out of bounds on the bottom and right,
+     * 2 meaning out of bounds on the left and top.
+     */
+    public int isBallOut(Ball ballIn) {
         currentX = ball.getCenter().getX();
         currentY = ball.getCenter().getY();
         int result = 0;
@@ -48,21 +53,28 @@ public class Ball {
         return result;
     }
 
-    public void Collide(Ball ball) { // based on how result is set (0-2) it knows which way it needs to reverse
-        if (IsBallOut(this) == 1) {
-            this.ReverseY();
-            this.MoveBall();
-        } else if (IsBallOut(this) == 2) {
-            this.ReverseX();
-            this.MoveBall();
+    /**
+     * Uses IsBallOut result to determine which direction to reverse and reverses
+     * the ball.
+     */
+    public void collide(Ball ball) {
+        if (isBallOut(this) == 1) {
+            this.reverseY();
+            this.moveBall();
+        } else if (isBallOut(this) == 2) {
+            this.reverseX();
+            this.moveBall();
         } else
-            this.MoveBall();
+            this.moveBall();
     }
 
-    public boolean Collide(Brick defender) {
-        boolean delete = false;
+    /**
+     * detects collison between a Brick and a ball, and changes the ball direction
+     * if true.
+     */
+    public void collide(Brick defender) {
         if (defender.getGraphics().equals(null)) {
-            return delete;
+            return;
         }
 
         currentX = getGraphics().getCenter().getX();
@@ -73,27 +85,24 @@ public class Ball {
         boolean hitRight = defender.getGraphics().testHit(currentX + radius, currentY);
 
         if (hitTop) {
-            ReverseY();
-            delete = true;
+            reverseY();
         } else if (hitBottom) {
-            ReverseY();
-            delete = true;
+            reverseY();
         }
 
         else if (hitRight) {
-            ReverseX();
-            delete = true;
+            reverseX();
         } else if (hitLeft) {
-            ReverseX();
-            delete = true;
+            reverseX();
         } else if (hitRight) {
-            ReverseX();
-            delete = true;
+            reverseX();
         }
-        return delete;
     }
 
-    public boolean IsCollided(Brick defender) {
+    /**
+     * only asks if Collison occured, then returns true if it should be deleted.
+     */
+    public boolean isCollided(Brick defender) {
         boolean delete = false;
         if (defender.getGraphics().equals(null)) {
             return delete;
@@ -111,7 +120,11 @@ public class Ball {
         return delete;
     }
 
-    public void Collide(Paddle bonker) {
+    /**
+     * Special case of Collide for the paddle, only checks the bottom and sides of
+     * the ball.
+     */
+    public void collide(Paddle bonker) {
         currentX = getGraphics().getCenter().getX();
         currentY = getGraphics().getCenter().getY();
 
@@ -120,11 +133,11 @@ public class Ball {
         boolean hitRight = bonker.getGraphics().testHit(currentX + radius, currentY);
 
         if (hitBottom) {
-            ReverseY();
+            reverseY();
         } else if (hitLeft) {
-            ReverseX();
+            reverseX();
         } else if (hitRight) {
-            ReverseX();
+            reverseX();
         }
 
     }
@@ -145,15 +158,15 @@ public class Ball {
         return speedX;
     }
 
-    public void ReverseY() {
+    public void reverseY() {
         speedY *= -1;
     }
 
-    public void ReverseX() {
+    public void reverseX() {
         speedX *= -1;
     }
 
-    public void MoveBall() {
+    public void moveBall() {
         currentX = ball.getX();
         currentY = ball.getY();
         ball.moveBy(speedX, speedY);

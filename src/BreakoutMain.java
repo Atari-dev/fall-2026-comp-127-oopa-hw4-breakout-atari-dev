@@ -32,15 +32,15 @@ public class BreakoutMain {
                 mainWindow = new Window();
                 canvas.add(mainWindow.getBackground());
             }
-            mainWindow.getBall().Collide(mainWindow.getBall());
-            mainWindow.getBall().Collide(mainWindow.getPaddle());
+            mainWindow.getBall().collide(mainWindow.getBall());
+            mainWindow.getBall().collide(mainWindow.getPaddle());
 
             tileSet.forEach(brick -> {
-                if (mainWindow.getBall().IsCollided(brick) && brick.getGraphics() != null) {
+                if (mainWindow.getBall().isCollided(brick) && brick.getGraphics() != null) {
 
                     try {
                         mainWindow.getBackground().remove(brick.getGraphics());
-                        mainWindow.getBall().Collide(brick);
+                        mainWindow.getBall().collide(brick);
                         mainWindow.updatePointsCounter(10);
                     } catch (Exception e) {
                     }
