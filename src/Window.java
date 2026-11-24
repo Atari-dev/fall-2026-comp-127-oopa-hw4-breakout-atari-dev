@@ -6,7 +6,6 @@ import java.awt.*;
  * The main container for the graphics objects and all active game objects.
  * also creates and stores the rows of bricks used in the game.
  */
-
 public class Window {
 
     private GraphicsGroup background;
@@ -18,6 +17,10 @@ public class Window {
     private Ball attack;
     private Paddle pladdle;
 
+    /**
+     * The main container for the graphics objects and all active game objects.
+     * also creates and stores the rows of bricks used in the game.
+     */
     public Window() {
         this.pointsCounter = new GraphicsText("Points: " + counter.getPoints());
         pointsCounter.setFont(FontStyle.PLAIN, 15);

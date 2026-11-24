@@ -1,14 +1,11 @@
 import java.awt.Color;
-
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
 
 /**
  * The ball that bounces around the screen.
  * 
- * @param speedX
- * @param speedY
- * @return a Ball object with graphics and collison logic.
+ * 
  */
 
 public class Ball {
@@ -20,6 +17,11 @@ public class Ball {
     private double currentX;
     private double currentY;
 
+    /**
+     * @return A ball object with graphics and logic.
+     * @param speedX
+     * @param speedY
+     */
     public Ball(int speedX, int speedY) {
         this.ball = new Ellipse(-40, -40, diameter, diameter);
         this.ball.setFillColor(new Color(0, 255, 0));
