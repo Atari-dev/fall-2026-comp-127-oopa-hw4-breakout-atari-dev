@@ -90,7 +90,7 @@ public class Window {
     }
 
     /**
-     * Checks and updates game state when the ball moves below the paddle
+     * Checks and updates game state when the ball moves below the paddles Y position.
      */
     public Window BallOut(Ball ball) {
 
@@ -118,6 +118,13 @@ public class Window {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Window [background=" + background + ", start=" + start + ", pointsCounter=" + pointsCounter
+                + ", livesCounter=" + livesCounter + ", counter=" + counter + ", attack=" + attack + ", pladdle="
+                + pladdle + "]";
     }
 
 }
